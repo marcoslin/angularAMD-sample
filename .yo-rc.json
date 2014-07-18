@@ -1,0 +1,11 @@
+{
+  "generator-angularamd": {
+    "app": "app",
+    "appjs": "scripts",
+    "appcss": "styles",
+    "build": "build",
+    "dist": "dist",
+    "hostname": "localhost",
+    "port": 8080
+  }
+}

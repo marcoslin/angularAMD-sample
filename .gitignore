@@ -1,0 +1,10 @@
+app/scripts/ext/
+app/styles/ext/
+app/styles/fonts/
+
+bower_components/
+node_modules/
+
+# IDE specifics
+.idea/
+
