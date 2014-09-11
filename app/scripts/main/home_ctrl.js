@@ -1,5 +1,6 @@
-define(['app'], function (app) {
-  return ['$scope', function ($scope) {
-    $scope.message = "Welcome to Home Page";
-  }];
+define(['app'], function () {
+    'use strict';
+    return ['$scope', function ($scope) {
+        $scope.message = 'Welcome to Home Page';
+    }];
 });

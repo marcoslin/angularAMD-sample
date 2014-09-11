@@ -1,8 +1,9 @@
 define(['angularAMD'], function (angularAMD) {
-  angularAMD.controller("navMenuController", function ($scope, $state) {
+  'use strict';
+  angularAMD.controller('navMenuController', function ($scope, $state) {
     $scope.isTabActive = function (tabName) {
       if (tabName === $state.current.name) {
-        return "active";
+        return 'active';
       }
     };
   });

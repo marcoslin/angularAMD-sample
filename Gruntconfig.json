@@ -1,33 +1,33 @@
 {
 
-"configVars": {
-  "app": "app",
-  "appjs": "scripts",
-  "appcss": "styles",
-  "build": "build",
-  "dist": "dist",
-  "hostname": "localhost",
-  "port": 8080
-},
-"bowerFiles": [
-  "angular/angular.js",
-  "angular-route/angular-route.js",
-  "angularAMD/dist/angularAMD.js",
-  "angularAMD/dist/ngload.js",
-  "requirejs/require.js",
-  "es5-shim/es5-shim.js",
-  "json3/lib/json3.js",
-  "angular-resource/angular-resource.js",
-  "angular-ui-router/release/angular-ui-router.js"
-],
-"cssFiles": [
-  "bootstrap/dist/css/bootstrap.css"
-],
-"cssFonts": [
-  "bootstrap/fonts/glyphicons-halflings-regular.*"
-],
-"buildFiles": [
-  "images/**"
-]
+  "configVars": {
+    "app": "app",
+    "appjs": "scripts",
+    "appcss": "styles",
+    "build": "build",
+    "dist": "dist",
+    "hostname": "localhost",
+    "port": 8080
+  },
+  "bowerFiles": [
+    "angular/angular.js",
+    "angular-route/angular-route.js",
+    "angularAMD/dist/angularAMD.js",
+    "angularAMD/dist/ngload.js",
+    "requirejs/require.js",
+    "es5-shim/es5-shim.js",
+    "json3/lib/json3.js",
+    "angular-resource/angular-resource.js",
+    "angular-ui-router/release/angular-ui-router.js"
+  ],
+  "cssFiles": [
+    "bootstrap/dist/css/bootstrap.css"
+  ],
+  "cssFonts": [
+    "bootstrap/fonts/glyphicons-halflings-regular.*"
+  ],
+  "buildFiles": [
+    "images/**", "views/**", "scripts/ext/require.js"
+  ]
 
 }

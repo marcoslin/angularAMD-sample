@@ -5,6 +5,8 @@ app/styles/fonts/
 bower_components/
 node_modules/
 
+build/
+
 # IDE specifics
 .idea/
 

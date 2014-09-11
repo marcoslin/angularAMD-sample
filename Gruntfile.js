@@ -65,6 +65,7 @@ module.exports = function (grunt) {
     clean: {
       options: { force: true },
       build: ['<%= cvars.build %>'],
+      'post-requirejs': ['<%= cvars.build %>/<%= cvars.appjs %>/ext'],
       deploy: [
         '<%= cvars.dist %>/*'
       ]
@@ -72,9 +73,9 @@ module.exports = function (grunt) {
     cssmin: {
       build: {
         files: {
-          '<%= cvars.build %>/<%= cvars.appcss %>/style.css': [
-            'bower_components/bootstrap/dist/css/bootstrap.min.css',
-            '<%= cvars.app %>/<%= cvars.appcss %>/style.css'
+          '<%= cvars.build %>/<%= cvars.appcss %>/main.css': [
+            '<%= cvars.app %>/<%= cvars.appcss %>/ext/bootstrap.css',
+            '<%= cvars.app %>/<%= cvars.appcss %>/main.css'
           ]
         }
       }
@@ -115,8 +116,8 @@ module.exports = function (grunt) {
         files: [
           { '<%= cvars.dist %>/index.html': '<%= cvars.build %>/index.html' },
           {
-            cwd: '<%= cvars.build %>/js/directive/template/', expand: true, flatten: false,
-            dest: '<%= cvars.dist %>/js/directive/template/',
+            cwd: '<%= cvars.build %>/<%= cvars.appjs %>/directive/template/', expand: true, flatten: false,
+            dest: '<%= cvars.dist %>/<%= cvars.appjs %>/directive/template/',
             src: ['*.html']
           },
           {
@@ -131,71 +132,41 @@ module.exports = function (grunt) {
     requirejs: {
       build: {
         options: {
-          baseUrl: '<%= cvars.app %>/js',
-          mainConfigFile: '<%= cvars.app %>/js/main.js',
+          baseUrl: '<%= cvars.app %>/<%= cvars.appjs %>',
+          mainConfigFile: '<%= cvars.app %>/<%= cvars.appjs %>/main.js',
           removeCombined: true,
           findNestedDependencies: true,
           optimize: 'none',
-          dir: '<%= cvars.build %>/js/',
+          dir: '<%= cvars.build %>/<%= cvars.appjs %>/',
           modules: [
-            { name: 'main' },
+            { name: 'app' },
             {
-              name: 'controller/home_ctrl',
-              exclude: ['main']
+              name: 'main/home_ctrl',
+              exclude: ['common']
             },
             {
-              name: 'controller/matches_ctrl',
-              exclude: ['main']
+              name: 'rooms/rooms_ctrl',
+              exclude: ['common']
             },
             {
-              name: 'controller/match_ctrl',
-              exclude: ['main']
-            },
-            {
-              name: 'controller/players_ctrl',
-              exclude: ['main']
-            },
-            {
-              name: 'controller/player_ctrl',
-              exclude: ['main']
-            },
-            {
-              name: 'controller/teams_ctrl',
-              exclude: ['main']
-            },
-            {
-              name: 'controller/team_ctrl',
-              exclude: ['main']
+              name: 'users/users_ctrl',
+              exclude: ['common']
             }
           ]
         }
       }
     },
-    uglify: {
-      deploy: {
-        options: {
-          preserveComments: 'some'
-        },
-        files: [
-          {
-            cwd: '<%= cvars.build %>/js/', expand: true,
-            dest: '<%= cvars.dist %>/js/',
-            src: ['*.js', 'ext/require.js', 'controller/*.js']
-          }
-        ]
-      }
-    },
     jshint: {
       build: {
         options: {
-          jshintrc: '<%= cvars.app %>/js/jshintrc.json'
+          jshintrc: '.jshintrc'
         },
         files: {
           src: [
-            '<%= cvars.app %>/js/*.js',
-            '<%= cvars.app %>/js/controller/*.js',
-            '<%= cvars.app %>/js/directive/*.js',
-            '<%= cvars.app %>/js/provider/*.js'
+            '<%= cvars.app %>/<%= cvars.appjs %>/*.js',
+            '<%= cvars.app %>/<%= cvars.appjs %>/main/*.js',
+            '<%= cvars.app %>/<%= cvars.appjs %>/rooms/*.js',
+            '<%= cvars.app %>/<%= cvars.appjs %>/users/*.js'
           ]
         }
       }
@@ -249,6 +220,7 @@ module.exports = function (grunt) {
     'htmlmin:build',
     'cssmin:build',
     'requirejs:build',
+    'clean:post-requirejs',
     'copy:build'
   ]);
 

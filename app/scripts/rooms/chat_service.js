@@ -1,10 +1,11 @@
 define(['app'], function (app) {
-  app.factory("ChatService", function () {
+  'use strict';
+  app.factory('ChatService', function () {
     // Simulate a service
     return {
       getRooms: function () {
-        return "Here is a list of rooms";
+        return 'From chat_service: Here is a list of rooms';
       }
     };
-  })
+  });
 });
