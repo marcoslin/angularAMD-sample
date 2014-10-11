@@ -18,7 +18,6 @@ define(['angularAMD'], function (angularAMD) {
     ;
 
     // Else -- This is not working for some reason:
-    //
     $urlRouterProvider
       .when('/users', '/users/list');
 
