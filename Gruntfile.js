@@ -57,7 +57,7 @@ module.exports = function (grunt) {
           {
             cwd: '<%= cvars.build %>/', expand: true,
             dest: '<%= cvars.dist %>/',
-            src: ['css/**', 'images/**', 'data/**']
+            src: ['<%= cvars.appcss %>/**', 'images/**']
           }
         ]
       }
@@ -103,8 +103,8 @@ module.exports = function (grunt) {
         files: [
           { '<%= cvars.build %>/index.html': '<%= cvars.build %>/index.build.html' },
           {
-            cwd: '<%= cvars.app %>/view/', expand: true, flatten: false,
-            dest: '<%= cvars.build %>/view/',
+            cwd: '<%= cvars.app %>/views/', expand: true, flatten: false,
+            dest: '<%= cvars.build %>/views/',
             src: ['*.html']
           }
         ]
@@ -116,17 +116,16 @@ module.exports = function (grunt) {
         files: [
           { '<%= cvars.dist %>/index.html': '<%= cvars.build %>/index.html' },
           {
-            cwd: '<%= cvars.build %>/<%= cvars.appjs %>/directive/template/', expand: true, flatten: false,
-            dest: '<%= cvars.dist %>/<%= cvars.appjs %>/directive/template/',
+            cwd: '<%= cvars.build %>/<%= cvars.appjs %>/main/templates/', expand: true,
+            dest: '<%= cvars.dist %>/<%= cvars.appjs %>/main/templates/',
             src: ['*.html']
           },
           {
-            cwd: '<%= cvars.build %>/view/', expand: true, flatten: false,
-            dest: '<%= cvars.dist %>/view/',
-            src: ['*.html']
+            cwd: '<%= cvars.build %>/views/', expand: true,
+            dest: '<%= cvars.dist %>/views/',
+            src: ['**/*.html']
           }
         ]
-
       }
     },
     requirejs: {
@@ -154,6 +153,22 @@ module.exports = function (grunt) {
             }
           ]
         }
+      }
+    },
+    uglify: {
+      deploy: {
+        options: {
+          preserveComments: 'some',
+          sourceMapIncludeSources: true,
+          sourceMap: true
+        },
+        files: [
+          {
+            cwd: '<%= cvars.build %>/<%= cvars.appjs %>/', expand: true,
+            dest: '<%= cvars.dist %>/<%= cvars.appjs %>/',
+            src: '**/*.js'
+          }
+        ]
       }
     },
     jshint: {
@@ -233,8 +248,8 @@ module.exports = function (grunt) {
     'build',
     'clean:deploy',
     'htmlmin:deploy',
-    'uglify:deploy',
-    'copy:deploy'
+    'copy:deploy',
+    'uglify:deploy'
   ]);
 
   grunt.registerTask('hello', function () {
