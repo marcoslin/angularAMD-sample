@@ -9,6 +9,7 @@ To setup and run this project, do the following:
 ```
 npm install
 grunt setup
+grunt build
 grunt devel
 ```
 
