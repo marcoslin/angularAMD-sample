@@ -4,7 +4,7 @@
   "dependencies": {
     "angular": "1.2.16",
     "angular-route": "1.2.16",
-    "angularAMD": "https://github.com/marcoslin/angularAMD.git#v0.2.0-rc.1",
+    "angularAMD": "0.2.1",
     "requirejs": "2.1.14",
     "es5-shim": "~3.4.0",
     "json3": "~3.3.2",

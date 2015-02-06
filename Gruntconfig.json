@@ -12,8 +12,8 @@
   "bowerFiles": [
     "angular/angular.js",
     "angular-route/angular-route.js",
-    "angularAMD/dist/angularAMD.js",
-    "angularAMD/dist/ngload.js",
+    "angularAMD/angularAMD.js",
+    "angularAMD/ngload.js",
     "requirejs/require.js",
     "es5-shim/es5-shim.js",
     "json3/lib/json3.js",
